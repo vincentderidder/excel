@@ -16,10 +16,8 @@ Archive _cloneArchive(
       if (_archiveFiles.containsKey(file.name)) {
         copy = _archiveFiles[file.name]!;
       } else {
-        var content = file.content as Uint8List;
-        var compress = !_noCompression.contains(file.name);
-        copy = ArchiveFile(file.name, content.length, content)
-          ..compress = compress;
+        var content = file.content;
+        copy = ArchiveFile(file.name, content.length, content);
       }
       clone.addFile(copy);
     }
